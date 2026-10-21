@@ -283,7 +283,7 @@
   // ==== 4. HOME PAGE =========================================================
 
   // Filter pills: categories, then occasions, then a budget filter
-  const BUDGET = 1500;
+  const BUDGET = 400;   // the "Under Rs …" filter button
   function renderFilters() {
     const cats = [...new Set(live().map(p => p.category))];
     const occ = [...new Set(live().flatMap(p => p.occasion))];

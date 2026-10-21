@@ -227,17 +227,17 @@
           "q": "What's your budget?",
           "answers": [
             {
-              "label": "Under Rs 1,500",
+              "label": "Under Rs 400",
               "points": {},
               "only": {
-                "maxPrice": 1500
+                "maxPrice": 400
               }
             },
             {
-              "label": "Up to Rs 3,000",
+              "label": "Up to Rs 1,000",
               "points": {},
               "only": {
-                "maxPrice": 3000
+                "maxPrice": 1000
               }
             },
             {

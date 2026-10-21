@@ -47,13 +47,13 @@ let res = await post({ method: "cod", customer, items: [{ id: "onyx-statement-se
 let out = await res.json();
 assert.equal(res.status, 200, JSON.stringify(out));
 let order = JSON.parse(drawer.get(out.orderId));
-assert.equal(order.subtotal, 4800); assert.equal(order.delivery, 250); assert.equal(order.total, 5050);
+assert.equal(order.subtotal, 2400); assert.equal(order.delivery, 250); assert.equal(order.total, 2650);
 assert.equal(sent.length, 3, "customer email + owner email + WhatsApp");
 assert.equal(sent[2].body.to, "923001234567");
 console.log("✓ COD order", out.orderId, "total", order.total, "— 2 emails + 1 WhatsApp sent");
 
 // 2. Free delivery over Rs 5,000
-res = await post({ method: "cod", customer, items: [{ id: "onyx-statement-set", qty: 2 }, { id: "red-bloom-studs", qty: 1 }] });
+res = await post({ method: "cod", customer, items: [{ id: "onyx-statement-set", qty: 4 }, { id: "red-bloom-studs", qty: 3 }] });
 order = JSON.parse(drawer.get((await res.json()).orderId));
 assert.equal(order.delivery, 0); console.log("✓ free delivery at", order.subtotal);
 
