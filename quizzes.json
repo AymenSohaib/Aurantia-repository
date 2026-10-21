@@ -1,0 +1,372 @@
+{
+  "_lesson": "Each quiz is a little chat. Every answer gives points to WORDS, and a product scores those points when the word appears in its tags, occasion or category (from your product sheet). The products with the most points are recommended. So when you add a new product, just give it good tags and the quizzes will find it. 'only' limits results (e.g. only Earrings, or a price limit). Write questions in the same voice as your Instagram captions.",
+  "quizzes": [
+    {
+      "id": "aura",
+      "title": "Find your aura",
+      "teaser": "Three questions to the piece that feels like you",
+      "intro": "Three questions, and we'll suggest the pieces that suit you.",
+      "questions": [
+        {
+          "q": "What do you reach for most days?",
+          "answers": [
+            {
+              "label": "A kurta and dupatta",
+              "points": {
+                "warm": 2,
+                "gold-tone": 1,
+                "pearl": 1,
+                "festive": 1
+              }
+            },
+            {
+              "label": "Knitwear and jeans",
+              "points": {
+                "everyday": 2,
+                "warm": 2,
+                "studs": 1
+              }
+            },
+            {
+              "label": "Something black",
+              "points": {
+                "black": 3,
+                "statement": 2,
+                "silver-tone": 1
+              }
+            }
+          ]
+        },
+        {
+          "q": "What's coming up for you?",
+          "answers": [
+            {
+              "label": "A wedding or mehndi",
+              "points": {
+                "weddings": 3,
+                "pearl": 2,
+                "festive": 2
+              }
+            },
+            {
+              "label": "Classes, work, coffee with friends",
+              "points": {
+                "everyday": 3,
+                "minimal": 2,
+                "studs": 1
+              }
+            },
+            {
+              "label": "A dinner or night out",
+              "points": {
+                "statement": 2,
+                "sparkle": 2,
+                "party": 2
+              }
+            }
+          ]
+        },
+        {
+          "q": "Which feels most like you?",
+          "answers": [
+            {
+              "label": "Soft and warm",
+              "points": {
+                "warm": 2,
+                "pearl": 2
+              }
+            },
+            {
+              "label": "A little sparkle",
+              "points": {
+                "sparkle": 3,
+                "zircon": 2
+              }
+            },
+            {
+              "label": "Bold and noticed",
+              "points": {
+                "statement": 3,
+                "set": 1
+              }
+            }
+          ]
+        }
+      ],
+      "result": "Our pick for you:"
+    },
+    {
+      "id": "wedding",
+      "title": "Wedding season",
+      "teaser": "Matched to your function and your outfit",
+      "intro": "Tell us about the function and we'll match the jewelry.",
+      "questions": [
+        {
+          "q": "Which function are you dressing for?",
+          "answers": [
+            {
+              "label": "Mehndi",
+              "points": {
+                "festive": 2,
+                "warm": 2,
+                "flower": 1,
+                "gold-tone": 1
+              }
+            },
+            {
+              "label": "Nikkah or baraat",
+              "points": {
+                "weddings": 3,
+                "pearl": 2,
+                "sparkle": 1
+              }
+            },
+            {
+              "label": "Walima or a dinner",
+              "points": {
+                "sparkle": 2,
+                "statement": 1,
+                "pearl": 1
+              }
+            }
+          ]
+        },
+        {
+          "q": "What colour is your outfit?",
+          "answers": [
+            {
+              "label": "Red, mustard or warm tones",
+              "points": {
+                "gold-tone": 2,
+                "warm": 2,
+                "red": 1
+              }
+            },
+            {
+              "label": "Pastel or white",
+              "points": {
+                "pearl": 3,
+                "silver-tone": 1
+              }
+            },
+            {
+              "label": "Black or a deep jewel tone",
+              "points": {
+                "silver-tone": 2,
+                "black": 2,
+                "statement": 1
+              }
+            }
+          ]
+        },
+        {
+          "q": "How much jewelry do you want to wear?",
+          "answers": [
+            {
+              "label": "Just earrings, kept simple",
+              "points": {
+                "earrings": 3,
+                "minimal": 1
+              }
+            },
+            {
+              "label": "Earrings that stand out",
+              "points": {
+                "drops": 2,
+                "statement": 2,
+                "earrings": 1
+              }
+            },
+            {
+              "label": "A full matching set",
+              "points": {
+                "sets": 4
+              }
+            }
+          ]
+        }
+      ],
+      "result": "For your function:"
+    },
+    {
+      "id": "gift",
+      "title": "Gift finder",
+      "teaser": "For your mother, sister or closest friend",
+      "intro": "Choosing for someone else? We'll narrow it down.",
+      "questions": [
+        {
+          "q": "Who is the gift for?",
+          "answers": [
+            {
+              "label": "My mother, khala or phupho",
+              "points": {
+                "pearl": 2,
+                "warm": 2,
+                "festive": 1
+              }
+            },
+            {
+              "label": "My sister or a friend",
+              "points": {
+                "everyday": 1,
+                "sparkle": 1,
+                "flower": 1,
+                "studs": 1
+              }
+            },
+            {
+              "label": "Someone who mostly wears black",
+              "points": {
+                "black": 3,
+                "statement": 2
+              }
+            }
+          ]
+        },
+        {
+          "q": "What's your budget?",
+          "answers": [
+            {
+              "label": "Under Rs 1,500",
+              "points": {},
+              "only": {
+                "maxPrice": 1500
+              }
+            },
+            {
+              "label": "Up to Rs 3,000",
+              "points": {},
+              "only": {
+                "maxPrice": 3000
+              }
+            },
+            {
+              "label": "No fixed budget",
+              "points": {
+                "statement": 1,
+                "set": 1
+              }
+            }
+          ]
+        },
+        {
+          "q": "How would you describe their style?",
+          "answers": [
+            {
+              "label": "Simple and understated",
+              "points": {
+                "minimal": 2,
+                "everyday": 2,
+                "studs": 1
+              }
+            },
+            {
+              "label": "They love a little sparkle",
+              "points": {
+                "sparkle": 3,
+                "zircon": 1
+              }
+            },
+            {
+              "label": "Bold and confident",
+              "points": {
+                "statement": 3
+              }
+            }
+          ]
+        }
+      ],
+      "result": "They'll love:",
+      "tip": "Tick \"This is a gift\" at checkout and we'll add a card with your message and leave the prices off the parcel."
+    },
+    {
+      "id": "everyday",
+      "title": "Everyday earrings",
+      "teaser": "Studs or drops, for wearing every day",
+      "intro": "Let's find a pair you'll wear every day.",
+      "only": {
+        "category": "Earrings"
+      },
+      "questions": [
+        {
+          "q": "Studs or something that hangs?",
+          "answers": [
+            {
+              "label": "Studs, close to the ear",
+              "points": {
+                "studs": 3,
+                "minimal": 1
+              }
+            },
+            {
+              "label": "A small drop",
+              "points": {
+                "drops": 3,
+                "hook": 1
+              }
+            },
+            {
+              "label": "Either is fine",
+              "points": {
+                "everyday": 1
+              }
+            }
+          ]
+        },
+        {
+          "q": "Where will you wear them most?",
+          "answers": [
+            {
+              "label": "Work or university",
+              "points": {
+                "everyday": 3,
+                "minimal": 1
+              }
+            },
+            {
+              "label": "Weekends and outings",
+              "points": {
+                "festive": 1,
+                "sparkle": 1,
+                "warm": 1
+              }
+            },
+            {
+              "label": "Everywhere, all day",
+              "points": {
+                "everyday": 2,
+                "sparkle": 1
+              }
+            }
+          ]
+        },
+        {
+          "q": "Which tone do you wear most?",
+          "answers": [
+            {
+              "label": "Warm, honey tones",
+              "points": {
+                "gold-tone": 3,
+                "warm": 1
+              }
+            },
+            {
+              "label": "Silver tones",
+              "points": {
+                "silver-tone": 3
+              }
+            },
+            {
+              "label": "I mix both",
+              "points": {
+                "sparkle": 1,
+                "flower": 1
+              }
+            }
+          ]
+        }
+      ],
+      "result": "Your everyday pair:"
+    }
+  ]
+}

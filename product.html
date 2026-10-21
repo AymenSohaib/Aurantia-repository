@@ -1,0 +1,55 @@
+<!doctype html>
+<!--
+  LESSON 1b — product.html is ONE page used for EVERY product.
+  The link says which product to show:
+      yoursite.com/p/amber-honey-studs     (pretty link, on Netlify)
+      product.html?id=amber-honey-studs    (works anywhere)
+  app.js reads the id and fills in the photos, price and details.
+  On Netlify, netlify/functions/product-page.mjs also fills in the
+  <meta property="og:…"> tags below, so the link shows a photo preview
+  when shared on WhatsApp or Instagram.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aurantia — Wear your Aura</title>
+  <meta name="description" content="Aurantia jewelry. Delivered across Pakistan.">
+  <meta name="theme-color" content="#01323d">
+  <meta property="og:title" content="Aurantia — Wear your Aura">
+  <meta property="og:description" content="Aurantia jewelry. Delivered across Pakistan.">
+  <meta property="og:image" content="images/products/champagne-pearl-drops-2.jpg">
+  <meta property="og:type" content="product">
+  <link rel="icon" href="images/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/brand/favicon.png" sizes="256x256">
+  <link rel="apple-touch-icon" href="images/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="product">
+  <a class="skip" href="#product">Skip to product</a>
+  <div id="site-header"></div>
+
+  <main id="product">
+    <div class="wrap">
+      <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"><a href="./">Shop</a></nav>
+      <div class="pdp" id="pdp"><p class="grid__empty">Loading…</p></div>
+    </div>
+
+    <section class="section" style="padding-top:0" id="moreSection" hidden>
+      <div class="wrap">
+        <div class="head"><div><p class="caps">Complete the look</p><h2>goes well with</h2></div></div>
+        <div class="grid" id="moreGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mobile: the buy button stays on screen while scrolling -->
+  <div class="sticky-buy" id="stickyBuy" aria-hidden="true"></div>
+
+  <div id="site-footer"></div>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

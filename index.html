@@ -1,0 +1,111 @@
+<!doctype html>
+<!--
+  LESSON 1 — index.html is the "skeleton" of the home page.
+  HTML is boxes inside boxes: <section> … </section>.
+  The class="…" names are what styles.css uses to decide the look.
+
+  Parts that repeat on every page (header, footer, bag, checkout) are
+  added by assets/app.js, so you only edit them in one place.
+  Product cards are also made by app.js from your product list.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aurantia — Wear your Aura</title>
+  <meta name="description" content="Aurantia jewelry and accessories: amber, zircon, pearl and statement sets, delivered across Pakistan. Wear your Aura.">
+  <meta name="theme-color" content="#01323d">
+  <!-- What WhatsApp / Instagram show when someone shares the link -->
+  <meta property="og:title" content="Aurantia — Wear your Aura">
+  <meta property="og:description" content="Amber studs, zircon swirls, champagne pearls and statement sets. Delivered across Pakistan.">
+  <meta property="og:image" content="images/products/champagne-pearl-drops-2.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="images/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/brand/favicon.png" sizes="256x256">
+  <link rel="apple-touch-icon" href="images/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="home">
+  <a class="skip" href="#shop">Skip to products</a>
+  <div id="site-header"></div>
+
+  <main>
+    <!-- ============ HERO ============
+         Background: "Satin Current" art (art/satin-current.html, seed 19, pearl palette) -->
+    <section class="hero">
+      <!-- the silk background drifts slowly; gold dust is drawn on the canvas by app.js -->
+      <div class="hero__bg" aria-hidden="true"></div>
+      <canvas class="hero__dust" id="heroDust" aria-hidden="true"></canvas>
+      <div class="wrap hero__inner">
+        <!-- the full logo: mark, AURANTIA, Jewelry & Accessories -->
+        <img class="hero__lockup" src="images/brand/logo-lockup.svg" alt="Aurantia — Jewelry &amp; Accessories">
+        <h1 class="hero__tagline">Wear your <em>Aura</em></h1>
+        <div class="hero__actions">
+          <a class="btn btn--light" href="#shop">Shop the collection</a>
+          <a class="btn btn--line" href="#aura">Find your piece</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SHOP ============ -->
+    <section class="section" id="shop">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <p class="caps">Shop</p>
+            <h2>The collection</h2>
+          </div>
+          <p class="sub" id="resultCount" aria-live="polite"></p>
+        </div>
+        <div class="filters" id="filters" role="group" aria-label="Filter products"></div>
+        <div class="grid" id="productGrid"><p class="grid__empty">Loading the collection…</p></div>
+      </div>
+    </section>
+
+    <!-- ============ QUIZZES (your A/B/C polls) ============
+         The quizzes themselves live in data/quizzes.json -->
+    <section class="section" id="aura">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <p class="caps">Three questions</p>
+            <h2>Find your piece</h2>
+          </div>
+          <p class="sub">Pick a quiz, answer three questions, and we'll suggest the pieces that suit you.</p>
+        </div>
+        <div class="quiz-picker" id="quizPicker" role="tablist" aria-label="Choose a quiz"></div>
+        <div class="quiz__box">
+          <div class="chat" id="chat" aria-live="polite"></div>
+          <div class="quiz__side">
+            <div class="quiz__progress" id="quizProgress" aria-hidden="true"></div>
+            <p class="quiz__step" id="quizStep"></p>
+            <div class="answers" id="answers"></div>
+            <div id="quizResult"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSTAGRAM ============ -->
+    <section class="section" style="padding-top:0" id="instagram">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <p class="caps">#WearYourAura</p>
+            <h2>From our Instagram</h2>
+          </div>
+          <a class="btn btn--emerald" id="igFollow" href="https://instagram.com/aurantia.official" target="_blank" rel="noopener">Follow @aurantia.official</a>
+        </div>
+        <!-- "The prologue": a story told like Instagram stories. Words live in data/prologue.json -->
+        <div class="prologue" id="prologue" aria-roledescription="story"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

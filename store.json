@@ -1,0 +1,22 @@
+{
+  "_lesson": "This file holds your store settings. Both the website and the server read it, so you only change things in one place. Edit the values on the right of each colon. Keep the quotes around text, and no quotes around numbers or true/false.",
+  "storeName": "Aurantia",
+  "tagline": "Wear your Aura",
+  "currency": "PKR",
+  "currencySymbol": "Rs",
+  "whatsappNumber": "923475919571",
+  "_whatsappNumber_help": "Your WhatsApp number in international format, no + and no spaces. 0300 1234567 becomes 923001234567.",
+  "instagram": "aurantia.official",
+  "email": "hello@example.com",
+  "deliveryFee": 250,
+  "freeDeliveryOver": 5000,
+  "deliveryTime": "3 to 5 working days",
+  "sheetCsvUrl": "",
+  "_sheetCsvUrl_help": "Paste your Google Sheet's 'Publish to web' CSV link here. Leave empty to use data/products.json instead.",
+  "sampleMode": true,
+  "_sampleMode_help": "true shows a notice that prices are placeholders. Set to false once your real prices are in.",
+  "prepaidFreeDelivery": false,
+  "_prepaidFreeDelivery_help": "true gives free delivery to customers who pay online. Online payments are rarely refused at the door, so this pays for itself if cash-on-delivery returns are high.",
+  "exchangeDays": 3,
+  "_exchangeDays_help": "Shown on product pages. Must match the Terms & Conditions page."
+}

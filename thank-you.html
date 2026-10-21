@@ -1,0 +1,78 @@
+<!doctype html>
+<!-- LESSON 15 — thank-you.html: the page customers land on after ordering.
+     It reads the order number from the link (?order=AUR-…) and asks the
+     server for a short summary to show. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Order Confirmed · Aurantia</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500;600&display=swap">
+  <link rel="icon" href="images/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/brand/favicon.png" sizes="256x256">
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    body { background: var(--emerald) url("images/brand/hero-satin.jpg") center / cover; }
+    .ty { min-height: 100vh; display: grid; place-items: center; padding-block: 48px; }
+    .ty__card { width: min(560px, 100%); display: grid; gap: 18px; justify-items: center; padding: 32px 28px; border-radius: 26px; background: var(--paper); text-align: center; box-shadow: 0 40px 80px -40px rgba(0,0,0,.8); }
+    .ty__logo { width: 220px; height: auto; filter: none; }
+    .ty__ring { width: 72px; height: 72px; color: var(--mustard); }
+    .ty__ring circle { stroke-dasharray: 260; stroke-dashoffset: 260; animation: draw 1.4s var(--ease) forwards; }
+    .ty__ring path { stroke-dasharray: 60; stroke-dashoffset: 60; animation: draw .6s .9s var(--ease) forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .ty h1 { font: 400 clamp(2rem, 6vw, 2.8rem)/1.05 var(--display); }
+    .ty__id { font: 600 var(--t-xs) var(--caps); letter-spacing: .2em; color: var(--gold-deep); }
+    .ty__lines { text-align: left; width: 100%; }
+    .ty p { color: var(--ink-soft); }
+  </style>
+</head>
+<body>
+  <main class="wrap ty">
+    <div class="ty__card">
+      <img src="images/brand/logo-lockup-teal.svg" alt="Aurantia — Jewelry &amp; Accessories" style="width:200px;height:auto">
+      <svg class="ty__ring" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M32 51 l12 12 l24 -26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h1 id="tyTitle">Order received</h1>
+      <p class="ty__id" id="tyId"></p>
+      <p id="tyMsg">We've sent a confirmation to your email and WhatsApp.</p>
+      <div class="ty__lines totals" id="tyLines"></div>
+      <a class="btn btn--emerald" href="./">Back to the shop</a>
+    </div>
+  </main>
+  <script>
+    (async () => {
+      const q = new URLSearchParams(location.search);
+      const id = q.get("order"), m = q.get("m");
+      // The order is placed, so empty the bag
+      try { localStorage.removeItem("aurantia-bag"); } catch {}
+      const rs = n => "Rs " + Math.round(n).toLocaleString("en-PK");
+      const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+      if (id) document.getElementById("tyId").textContent = "ORDER " + id;
+      const msg = document.getElementById("tyMsg");
+      if (m === "online") msg.textContent = "Payment received. Your confirmation is on its way by email and WhatsApp.";
+      if (m === "cod") msg.textContent = "Pay the rider when your parcel arrives. Your confirmation is on its way by email and WhatsApp.";
+      if (m === "whatsapp") msg.textContent = "Send the WhatsApp message that just opened and we'll confirm payment with you there.";
+      if (m === "review") {
+        document.getElementById("tyTitle").textContent = "We're checking your payment";
+        msg.textContent = "Your payment needs a quick manual check. We'll message you on WhatsApp shortly — please don't pay again.";
+      }
+      if (!id) return;
+      try {
+        const res = await fetch("/api/order-status?id=" + encodeURIComponent(id));
+        if (!res.ok) return;
+        const o = await res.json();
+        document.getElementById("tyTitle").textContent = m === "review" ? "We're checking your payment" : "Thank you, " + o.firstName;
+        document.getElementById("tyLines").innerHTML =
+          o.lines.map(l => `<div><span>${esc(l.name)} × ${l.qty}</span><span class="v">${rs(l.lineTotal)}</span></div>`).join("") +
+          `<div><span>Delivery</span><span class="v">${o.delivery ? rs(o.delivery) : "Free"}</span></div>` +
+          `<div class="grand"><span>Total</span><span class="v">${rs(o.total)}</span></div>`;
+      } catch {}
+    })();
+  </script>
+</body>
+</html>

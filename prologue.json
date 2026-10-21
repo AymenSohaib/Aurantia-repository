@@ -1,0 +1,21 @@
+{
+  "_lesson": "The prologue under the Instagram button is told like Instagram stories: each chapter is one 'slide'. Change the words freely. 'line' is the big text, 'small' is the line under it. The last chapter shows the 'choices' buttons; each one links somewhere on the site (#quiz-wedding opens the wedding quiz, #shop jumps to the collection).",
+  "seconds": 6,
+  "chapters": [
+    { "label": "Prologue", "line": "Every piece has a story.", "small": "Yours starts here. Tap to turn the page." },
+    { "label": "Chapter one", "line": "It begins with a look in the mirror.", "small": "Amber for warm days. Pearl for big ones. Zircon when you want the room to notice." },
+    { "label": "Chapter two", "line": "Some jewelry waits for weddings.", "small": "Ours is made for a Tuesday, a chai date, an 8am class, and the wedding too." },
+    { "label": "Chapter three", "line": "Your aura isn't loud or quiet.", "small": "It's yours. We just help it shine." },
+    {
+      "label": "Your chapter",
+      "line": "What happens next?",
+      "small": "Choose where your story goes.",
+      "choices": [
+        { "label": "A wedding is coming", "href": "#quiz-wedding" },
+        { "label": "Something for every day", "href": "#quiz-everyday" },
+        { "label": "A gift for someone", "href": "#quiz-gift" },
+        { "label": "Just let me browse", "href": "#shop" }
+      ]
+    }
+  ]
+}
