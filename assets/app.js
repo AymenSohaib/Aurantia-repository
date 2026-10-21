@@ -30,11 +30,12 @@
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
   const PAGE = document.body.dataset.page || window.AURANTIA_PAGE;   // "home" or "product"
 
-  // Pretty product links (/p/amber-honey-studs) only work on Netlify.
-  // In the Claude preview we use product.html#id; on your own computer, product.html?id=…
+  // Product links open product.html?id=… (works everywhere). The short link
+  // /p/amber-honey-studs is for sharing: it shows a photo preview on WhatsApp
+  // and Instagram, then opens the same product page.
   const PREVIEW = Boolean(window.AURANTIA_PREVIEW);
   const LOCAL = ["localhost", "127.0.0.1", ""].includes(location.hostname);
-  const productUrl = id => PREVIEW ? `product.html#${id}` : LOCAL ? `product.html?id=${id}` : `/p/${id}`;
+  const productUrl = id => PREVIEW ? `product.html#${id}` : `${LOCAL ? "" : "/"}product.html?id=${encodeURIComponent(id)}`;
   const homeUrl = PREVIEW || LOCAL ? "index.html" : "/";
 
   const state = {

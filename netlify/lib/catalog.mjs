@@ -7,14 +7,17 @@
   (from the Google Sheet, or data/products.json) and works out the total.
 */
 
-// Downloads data/store.json from your own live site
-export async function loadSettings(origin) {
-  const res = await fetch(`${origin}/data/store.json`);
-  if (!res.ok) throw new Error("Couldn't read store settings");
-  return res.json();
+// The settings and product list are packed into the server program when the
+// site is published, so the server never has to download them from the
+// website. (That would fail while the site is private, and it's slower.)
+import bundledSettings from "../../data/store.json" with { type: "json" };
+import bundledProducts from "../../data/products.json" with { type: "json" };
+
+export async function loadSettings() {
+  return bundledSettings;
 }
 
-export async function loadProducts(origin, settings) {
+export async function loadProducts(_origin, settings) {
   if (settings.sheetCsvUrl) {
     try {
       const res = await fetch(settings.sheetCsvUrl);
@@ -23,9 +26,7 @@ export async function loadProducts(origin, settings) {
       console.warn("Sheet fetch failed, falling back to products.json", e);
     }
   }
-  const res = await fetch(`${origin}/data/products.json`);
-  if (!res.ok) throw new Error("Couldn't read products");
-  return (await res.json()).map(normalize).filter(Boolean);
+  return bundledProducts.map(normalize).filter(Boolean);
 }
 
 // Same CSV reader as the website uses (see assets/app.js for comments)

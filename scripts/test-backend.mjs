@@ -95,20 +95,30 @@ const st = await (await status(new Request(`https://shop.test/api/order-status?i
 assert.equal(st.firstName, "Ayesha"); assert.equal(st.phone, undefined); assert.equal(st.status, "paid");
 console.log("✓ order-status shows first name only");
 // 6. Optional reward: free delivery when paying online
-storeOverride = { prepaidFreeDelivery: true };
+const bundled = await (await import("../netlify/lib/catalog.mjs")).loadSettings();
+bundled.prepaidFreeDelivery = true;
 res = await post({ method: "online", customer: { ...customer, gift: true, giftNote: "Happy birthday!" }, items: [{ id: "red-bloom-studs", qty: 1 }] });
 out = await res.json();
 order = JSON.parse(drawer.get(out.orderId));
 assert.equal(order.delivery, 0); assert.equal(order.customer.giftNote, "Happy birthday!");
 console.log("✓ prepaid free delivery + gift note");
-storeOverride = {};
+bundled.prepaidFreeDelivery = false;
 
-// 7. Product links get a share preview
+// 7. Short share links: preview tags + forward to the product page
 const productPage = (await import("../netlify/functions/product-page.mjs")).default;
 const html = await (await productPage(new Request("https://shop.test/p/champagne-pearl-drops"), { params: { id: "champagne-pearl-drops" } })).text();
 assert.match(html, /<title>Champagne Pearl Drops · Aurantia<\/title>/);
 assert.match(html, /og:image" content="https:\/\/shop.test\/images\/products\/champagne-pearl-drops-1.jpg"/);
-assert.match(html, /<base href="\/">/);
-console.log("✓ /p/champagne-pearl-drops has its own title and photo preview");
+assert.match(html, /product\.html\?id=champagne-pearl-drops/);
+console.log("✓ /p/champagne-pearl-drops shows a photo preview and opens the product page");
+
+// 8. The server never downloads its own website (works while the site is private)
+const calls = [];
+const realFetch = globalThis.fetch;
+globalThis.fetch = async (u, o) => { calls.push(String(u)); return realFetch(u, o); };
+await post({ method: "cod", customer, items: [{ id: "red-bloom-studs", qty: 1 }] });
+globalThis.fetch = realFetch;
+assert.ok(!calls.some(u => u.includes("shop.test/data/")), "server should not fetch its own data files");
+console.log("✓ checkout works without the server downloading the website");
 
 console.log("\nAll backend checks passed.");
