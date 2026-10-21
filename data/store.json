@@ -9,7 +9,7 @@
   "instagram": "aurantia.official",
   "email": "aurantia.store@gmail.com",
   "deliveryFee": 250,
-  "freeDeliveryOver": 5000,
+  "freeDeliveryOver": 0,
   "deliveryTime": "3 to 5 working days",
   "sheetCsvUrl": "",
   "_sheetCsvUrl_help": "Paste your Google Sheet's 'Publish to web' CSV link here. Leave empty to use data/products.json instead.",
@@ -18,5 +18,6 @@
   "prepaidFreeDelivery": false,
   "_prepaidFreeDelivery_help": "true gives free delivery to customers who pay online. Online payments are rarely refused at the door, so this pays for itself if cash-on-delivery returns are high.",
   "exchangeDays": 3,
-  "_exchangeDays_help": "Shown on product pages. Must match the Terms & Conditions page."
+  "_exchangeDays_help": "Shown on product pages. Must match the Terms & Conditions page.",
+  "_freeDeliveryOver_help": "Free delivery when the bag reaches this amount, e.g. 1500. 0 = no free delivery."
 }
